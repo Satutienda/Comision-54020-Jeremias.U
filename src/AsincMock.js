@@ -1,7 +1,7 @@
 
 const products = [
     {
-      "nombreSatu": "Tanga broche dorado negro S",
+      "nombreSatu": "Tanga",
       "familia": "Ropa Interior",
       "pesoGrams": 33,
       "tga": 0.2,
@@ -89645,3 +89645,20 @@ const products = [
         },500 )
     })
  } 
+
+ export const getProductByName = (nombreSatu) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(products.find(prod => prod.nombreSatu.includes(nombreSatu)))
+    }, 500);
+  })
+}
+
+
+export const getProductsByGrupo = (grupo) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(products.filter(prod => prod.grupo === grupo))
+    }, 500);
+  })
+}

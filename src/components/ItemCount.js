@@ -5,6 +5,7 @@ import {useState} from "react"
 
 const ItemCount = ({stock, initial, onAdd})=>{
 
+    stock= 5
     const [quantity, setQuantity] = useState(initial)
 
     const increment = () => {

@@ -1,4 +1,5 @@
 import "./Item.css"
+import { NavLink, Link } from "react-router-dom"
 
 
 const Item = ({nombreSatu, ImagPpal, precioLista, stock})=>{
@@ -21,7 +22,7 @@ const Item = ({nombreSatu, ImagPpal, precioLista, stock})=>{
                     Stock disponible: {stock}
                 </p>
                 <footer className="ItemFooter">
-                    <button className="Option">ver detalle</button>
+                    <Link to={`/productos/${nombreSatu}`} className="Option">ver detalle</Link>
                 </footer>
             </section>
 
