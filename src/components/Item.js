@@ -1,8 +1,8 @@
 import "./Item.css"
-import { NavLink, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 
-const Item = ({nombreSatu, ImagPpal, precioLista, stock})=>{
+const Item = ({id, nombreSatu, ImagPpal, precioLista, stock})=>{
 
     return(
         <article className="CardItem">
@@ -22,7 +22,7 @@ const Item = ({nombreSatu, ImagPpal, precioLista, stock})=>{
                     Stock disponible: {stock}
                 </p>
                 <footer className="ItemFooter">
-                    <Link to={`/productos/${nombreSatu}`} className="Option">ver detalle</Link>
+                    <Link to={`/productos/${id}`} className="Option">ver detalle</Link>
                 </footer>
             </section>
 

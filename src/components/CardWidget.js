@@ -1,27 +1,24 @@
-function CardWidgetSatu() {
+import { useContext } from "react";
+import { CartContext } from "./context/CartContext";
+import { Link } from "react-router-dom";
 
-let QtyItemCard=8
+
+
+
+const CardWidgetSatu = () => {
+
+    const { quantity } = useContext(CartContext)
 
     return (
-        <div style={{ display: "flex", alignItems: "center"}}>
-            
+        <Link to="/carrito" className="CartWidget" >
+            <img className="CartImg" src="../../public/logo192.png" alt="Carrito"/>
+            {quantity}
 
-                <div style={{ marginRight: '10px', width: 50 , height: 50 , position: "absolute",}} >
-                    <img src="https://img.freepik.com/vector-premium/icono-carrito-compras-vectorial-etiqueta-engomada-papel-sombra-simbolo-compras-coloreado-aislado_118339-1774.jpg?w=360" alt="Descripción de la imagen" style={{ marginRight: '10px', width: 50 , height: 50 }} />
-
-                    
-
-                </div>
-                <div>
-                <p style={{ marginRight: '10px', width: 50 , height: 50 , position: "relative", color: "red"}} >{QtyItemCard}</p>
-                </div>
-                
-                
-                
-                
-           
-        </div>
+        </Link>
     )
 }
 
 export default CardWidgetSatu;
+
+
+//style= {{ display: totalQuantity > 0 ? "block" : "none"}}

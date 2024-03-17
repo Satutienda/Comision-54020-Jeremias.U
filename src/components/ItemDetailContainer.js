@@ -1,34 +1,42 @@
-import { useState, useEffect } from "react"
-import { getProductByName } from "../AsincMock"
-import ItemDetail from './ItemDetail'
-import {useParams} from "react-router-dom"
+import { useState, useEffect } from "react";
+import ItemDetail from './ItemDetail';
+import { useParams } from "react-router-dom";
+import { getDoc, doc } from "firebase/firestore";
+import { db } from "../../src/services/firebase/firebaseConfig";
 
+const ItemDetailContainer = () => {
+    const [product, setProduct] = useState(null);
+    const { id } = useParams();
 
-const ItemDetailContainer = ()=>{
-    const [product, setProduct]= useState(null)
-    const {nombreSatu} = useParams()
- 
-    useEffect(()=>{
-        getProductByName(nombreSatu)
+    useEffect(() => {
+        const docRef = doc(db, "products", id);
 
-        .then(response => {
-            setProduct(response)
-        })
-        .catch(error =>{
-            console.error(error)
-        },[nombreSatu])
-
-        
-    },[])
-
-
-    return(
-        <div>
+        getDoc(docRef)
+    .then(response => {
+        const data = response.data();
+        if (data) {
             
-            <ItemDetail {...product}/>
-        </div>
-        
-    )
-}
+            const productAdapted = {
+                id: response.id,
+                ...data
+            };
+            setProduct(productAdapted);
+        } else {
+            console.error("El documento no existe o está vacío");
+        }
+    })
+    .catch(error => {
+        console.error("Error al obtener el documento:", error);
+    });
 
-export default ItemDetailContainer
+    }, [id]);
+
+    return (
+        <div>
+            {product && <ItemDetail {...product} />}
+            
+        </div>
+    );
+};
+
+export default ItemDetailContainer;

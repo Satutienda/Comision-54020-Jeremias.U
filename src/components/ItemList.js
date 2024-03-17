@@ -17,9 +17,9 @@ const ItemList = ({ products }) => {
 
     return (
         <div className="ListGroup">
-            {/* Renderizar solo los productos con valores únicos de ImgPal */}
+            
             {uniqueProducts.map((prod) => (
-                <Item key={prod.nombreSatu} {...prod} />
+                <Item key={prod.id} {...prod} />
             ))}
         </div>
     );
