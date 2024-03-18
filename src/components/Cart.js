@@ -1,18 +1,27 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CartContext } from "./context/CartContext";
 import CartItem from "./CartItem";
 import { Link } from "react-router-dom";
+import "./Cart.css";
 
 const Cart = () => {
-    const { cart, clearCart, totalQuantity } = useContext(CartContext);
+    const { cart, clearCart, totalQuantity, removeItem } = useContext(CartContext);
+    const [total, setTotal] = useState(0);
 
-    // Calcular el total de la compra
-    const total = cart.reduce((acc, item) => {
-        return acc + (item.quantity * item.precioLista);
-    }, 0);
+    useEffect(() => {
+        // Calcula el total cada vez que el carrito cambie
+        const newTotal = cart.reduce((acc, item) => {
+            return acc + (item.quantity * item.precioLista);
+        }, 0);
+        setTotal(newTotal);
+    }, [cart]);
 
     const handleClearCart = () => {
         clearCart();
+    };
+
+    const handleDeleteItem = (id) => {
+        removeItem(id);
     };
 
     if (totalQuantity === 0) {
@@ -27,7 +36,7 @@ const Cart = () => {
     return (
         <div>
             {cart.map(producto => (
-                <CartItem key={producto.nombreSatu} {...producto} />
+                <CartItem key={producto.id} {...producto} onDelete={handleDeleteItem} />
             ))}
             <h3>Total: ${total.toFixed(2)}</h3>
             <button onClick={handleClearCart} className="Button">Limpiar Carrito</button>
@@ -37,4 +46,6 @@ const Cart = () => {
 };
 
 export default Cart;
+
+
 

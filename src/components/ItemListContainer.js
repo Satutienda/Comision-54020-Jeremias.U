@@ -21,8 +21,6 @@ const ItemListContainer = ({ saludos }) => {
                     const data = doc.data();
                     return {
                         id: doc.id,
-                       
-
                         ...data
                     };
                 });

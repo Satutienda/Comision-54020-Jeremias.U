@@ -1,0 +1,27 @@
+.cart-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .cart-item p {
+    margin: 5px 0;
+  }
+  
+  .cart-item .nombreSatu {
+    font-weight: bold;
+  }
+  
+  .cart-item .quantity {
+    color: #555;
+  }
+  
+  .cart-item .precioLista {
+    color: #ff0000; /* Color rojo para el precio */
+  }
+  .delete-icon {
+    /* Estilos opcionales */
+    font-size: 16px;
+    color: #ff0000; /* Color del icono de eliminación */
+    /* Ajusta los estilos según tus necesidades */
+}

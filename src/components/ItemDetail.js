@@ -35,7 +35,7 @@ const ItemDetail = ({ id, nombreSatu, grupo, paraClima, ImagPpal, precioLista, s
             </section>
             <footer className="ItemFooter">
                 {quantityAdded > 0 ? (
-                    <Link to="/cart" className="Option">
+                    <Link to="/carrito" className="Option">
                         Terminar Compra
                     </Link>
                 ) : (
